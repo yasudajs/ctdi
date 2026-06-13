@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Code & Community | 鈴木 達也 ポートフォリオ</title>
+    <style>
+        /* ベーススタイル */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #18bc9c;
+            --text-color: #333333;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* メインビジュアル */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+        /* セクション共通 */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .bg-light {
+            background-color: var(--bg-light);
+        }
+
+        /* プロフィール */
+        .profile-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .profile-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .profile-sub {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* サービス/事業内容 */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* 実績・活動 */
+        .projects-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .project-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--secondary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .project-date {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+
+        .project-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* お問い合わせ */
+        .contact-text {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #16a085;
+        }
+
+        /* フッター */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .profile-wrapper {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">ICT Consultant & Trainer</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#activities">Activities</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>人間中心のITで、組織と地域を動かす</h1>
+            <p>ICTコンサルティング / 技術研修講師 / 地域DX支援</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="profile-wrapper">
+                <div class="profile-text">
+                    <h3>鈴木 達也</h3>
+                    <p class="profile-sub">ICTコンサルタント / プロフェッショナル・トレーナー</p>
+                    <p>
+                        システム開発会社にてJavaプログラマーおよび社内基幹システムの開発・運用を経験。その後、独立。
+                        現在は個人事業主（ソール・プロプロエター）として、企業向けのIT技術研修の設計・登壇や、
+                        地域コミュニティ・自治会等のデジタル化（DX）を推進するコンサルティング活動を行っています。
+                    </p>
+                    <br>
+                    <p>
+                        単にツールを導入するだけでなく、教育心理学（ARCSモデルなど）に基づいた「受講者が自発的に学びたくなる研修設計」や、
+                        ITに馴染みの薄い地域組織に寄り添った「誰一人取り残さないデジタル活用」を強みとしています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>IT技術研修・新入社員教育</h3>
+                    <p>JavaやPythonを中心としたプログラミング研修の講師、教材およびカリキュラム設計を行います。モチベーションモデルを取り入れ、自立して動けるエンジニアを育成します。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>地域コミュニティDX支援</h3>
+                    <p>自治会やNPO、地縁団体などのデジタル移行を支援します。GoogleフォームやGmailを活用した、運用負担の少ないスマートな連絡・管理体制をご提案します。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>業務効率化・ツール開発</h3>
+                    <p>Python（Tkinter等によるGUIアプリ開発）やクラウドツールを組み合わせ、現場の「ちょっと不便」を解消する軽量でクロスプラットフォームな社内ツールの開発・導入を支援します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities">
+        <div class="container">
+            <h2 class="section-title">Activities & Projects</h2>
+            <div class="projects-list">
+                <div class="project-item">
+                    <div class="project-date">2026年5月</div>
+                    <h3>新入社員向け テクニカル・ミニ研修の実施</h3>
+                    <p>GW明けのモチベーション維持に着目し、Javaプログラミングの基礎と、実務に向けた「自律的学習マインド」を育成するミニ研修を企画・登壇しました。</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-date">2026年2月</div>
+                    <h3>Urban Data Challenge（UDC）岐阜ブロック 参画</h3>
+                    <p>オープンデータや地域課題解決をテーマとした「UDCイベント」の実行委員会として、オンライン振り返りイベントの企画・運営および広報等に携わりました。</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-date">継続中</div>
+                    <h3>自治会・地域組織の窓口デジタル化コンサルティング</h3>
+                    <p>地域の連絡窓口やイベント受付をGoogle Workspace等を活用して集約・デジタル化し、役員の負担軽減と地域住民の利便性向上を両立する仕組み作りに取り組んでいます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-light">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-text">
+                <p>研修講師のご依頼、地域団体のデジタル化相談、システム効率化のご相談など、お気軽にお問い合わせください。</p>
+            </div>
+            <a href="mailto:your-email@example.com" class="btn">お問い合わせはこちら</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Office Code & Community. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
